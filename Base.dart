@@ -96,13 +96,19 @@ int dtConst = TestFunction(dt);
 print("dtConst result=$dtConst"); //dtConst result=33
 
 /**
- * const 在等号的右面，则这个变量是可以重新赋值的。包括修改某一个值
+ * const 在等号的右面，则这个变量是可以重新赋值的。此时，这个变量已经改变为非const 的值，所以可以对foo进行改值操作，
  */
   var foo = const[];
   foo=[1,2];
-    print('print foo:$foo'); //print foo:[1, 2]
-    foo[0]=13;
-    print('print foo:$foo'); //print foo:[13, 2]
+  print('print foo:$foo'); //print foo:[1, 2]
+
+/**
+ * 变量fooConst被赋值为const类型list，此时去修改变量fooconst，系统会报错。
+ 
+  var fooConst=const[1,3,5];
+  fooConst[0]=1; ////Unsupported operation: Cannot modify an unmodifiable list
+  print('print fooConst:$fooConst'); //
+*/
 
 /* 
  * const 在等号的左面，则这个变量是不可以重新赋值的。包括修改某一个值

@@ -79,4 +79,140 @@ var rstring = r'In a raw string, not even \n gets special treatment.';
 var nrstring = 'In a raw string, not even \n gets special treatment.';
 print('have r handle string :$rstring');
 print('no r handle string $nrstring');
+
+/**
+ * const 定义的字符串，只能是全const定义的变量进行连接
+ */
+const aConstNum=0;
+const aConstBool=true;
+const aConstString='a constant string';
+const validConstString = '$aConstNum $aConstBool $aConstString';
+print('valid Const String : $validConstString');
+
+//下面证明了const的变量，只能是有const的变量赋值，
+var aNum=0;
+var aBool=true;
+var aString ='a string';
+const aConstList=[1,2,3];
+//const invalidConstString0 = '$aNum $aBool $aString'; Error: Not a constant expression.
+//const invalidConstString1='$aNum $aBool $aString $aConstList'; Error: Not a constant expression.
+// print('invalidConstString0 :$invalidConstString0'); //Error: Not a constant expression.
+// print('invalidConstString1 :$invalidConstString1');  Error: Not a constant expression.
+
+
+//--------------------List---------------------
+/**
+ *  在dart 中 所谓的list ，其实就是array ，列表使用基于0的索引，
+ *  列表中可以放入不同类型的值
+ */
+var constantList = const[1,2,3];
+//constantList[1] = 1; //Unsupported operation: Cannot modify an unmodifiable 
+
+/**
+ * base 中有提到，如果将foo 重新赋值，变量foo 将不在是const 类型的变量。
+ */
+var foo = const[];
+foo=[1,'ee',true];
+foo[0]=13;
+print('print foo:$foo');
+
+/**
+ *  展开运算符（...）和判空展开运算符（...?）提供想集合插入过个元素的简洁方式
+ */
+var list = [1, 2, 3];
+var list2 = [0, ...list];
+print('展开运算符 ：$list2');
+
+var listNull;
+var list2null = [0, ...?listNull];
+print('判空展开运算符 ：$list2null');
+
+/**
+ * 在数组中 提供if 判断 和 for 循环输出，来构建使用条件和循环的集合
+ */
+bool promoActive=false;
+var nav = [
+  'Home',
+  'Furniture',
+  'Plants',
+  if (promoActive) 'Outlet' else 'no',
+  promoActive?'true':'false',
+  {
+    if(promoActive)
+    {
+      'function true'
+    }else{
+      'function false'
+    }
+  }
+];
+print('在数组中添加if 判断输出: $nav');
+
+var listOfInts = [1, 2, 3];
+var listOfStrings = [
+  '#0',
+  for (var i in listOfInts) '#$i'
+];
+print('数组中的for循环输出: $listOfStrings');
+
+var setIn=List<String>();
+setIn.add('value1');
+setIn.add('value2');
+//setIn.add(1);//Error: The argument type 'int' can't be assigned to the parameter type 'String'.
+print('用list 声明: $setIn');
+
+//--------Set ---------
+/**
+ * 所谓的集合就是{}扩起来的值的集合, 可以看到，与java 一样，set是去重复的
+ */
+var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+var halogensSet=Set<String>();
+var halogensSetN=<String>{};
+halogensSet.add('fluorine');
+halogensSet.addAll(halogens);
+halogensSetN.add('value');
+halogensSetN.add('halogensSe');
+print('Set 的定义和添加方式 $halogensSet');
+print('Set 的定义和添加方式1 $halogensSetN');
+
+/**
+ *  展开运算符（...）和判空展开运算符（...?）提供想集合插入过个元素的简洁方式
+ */
+
+var setTest={'value1','value2'};
+var setTest1={'value0',...setTest};
+print('set 的展开运算符:$setTest1');
+
+var nullSet=<String>{};
+var setTest2={'value0',...?nullSet};
+print('set 的判断展开运算符:$setTest2');
+
+/**
+ * 在set中 提供if 判断 和 for 循环输出，来构建使用条件和循环的集合
+ */
+bool promoActiveset=false;
+var navset = {
+  'Home',
+  'Furniture',
+  'Plants',
+  if (promoActiveset) 'Outlet' else 'no',
+  promoActiveset?'true':'false',
+  {
+    if(promoActive)
+    {
+      'function true'
+    }else{
+      'function false'
+    }
+  }
+};
+print('在set中添加if 判断输出: $navset');
+
+var listOfIntsset = <int>{1,2,3};
+var listOfStringsset = {
+  '#0',
+  for (var i in listOfIntsset) '#$i'
+};
+print('set中的for循环输出: $listOfStringsset');
+
 }
