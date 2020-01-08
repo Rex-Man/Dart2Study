@@ -108,6 +108,17 @@ const aConstList=[1,2,3];
 var constantList = const[1,2,3];
 //constantList[1] = 1; //Unsupported operation: Cannot modify an unmodifiable 
 
+
+// 固定长度
+var fixedList = List(2);
+print(fixedList.length); // 2
+ 
+fixedList[0]="hello";
+fixedList[1]=123;
+ print('输出定长的list：$fixedList')
+//fixedList.add(1); // 报错。固定长度不能添加元素
+
+
 /**
  * base 中有提到，如果将foo 重新赋值，变量foo 将不在是const 类型的变量。
  */
@@ -214,5 +225,79 @@ var listOfStringsset = {
   for (var i in listOfIntsset) '#$i'
 };
 print('set中的for循环输出: $listOfStringsset');
+
+//-------map------
+/**
+ * 是键值对象，键和值可以为任意对象类型，每个键仅出现一次，相同值可出现多次。
+ */
+//Map的定义方式
+var gifts = {
+  // Key:    Value
+  'first': 'partridge',
+  'second': 'turtledoves',
+  'fifth': 'golden rings'
+};
+
+var nobleGases = {
+  2: 'helium',
+  10: 'neon',
+  18: 'argon',
+};
+
+var giftsMap = Map();
+giftsMap['first'] = 'partridge';
+giftsMap['second'] = 'turtledoves';
+giftsMap['fifth'] = 'golden rings';
+
+var nobleGasesMap = Map();
+nobleGasesMap[2] = 'helium';
+nobleGasesMap[10] = 'neon';
+nobleGasesMap[18] = 'argon';
+
+  var giftsAdd = {'first': 'partridge'};
+  giftsAdd['fourth'] = 'calling birds'; // Add a key-value pair
+  print('Add Map Value $giftsAdd');
+
+  //如果你在寻找一个不存在的映射键，会返回null；
+  print('获取一个不存在的key : ${giftsAdd["second"]}');
+
+  Map<int,String> mapConst =const{
+   1:'first'
+  };
+  //mapConst[2]='second';  //Unsupported operation: Cannot set value in unmodifiable Map
+  print('测试赋值const 的map 变量 不能改变值 ${mapConst}');
+
+
+/**
+ *  展开运算符（...）和判空展开运算符（...?）提供想映射插入过个元素的简洁方式
+ */
+
+var tmaptest={1:'value1',2:'value2'};
+var tmaptest1={3:'value0',...tmaptest};
+print('map 的展开运算符:$tmaptest1');
+
+var nullmap=Map<int,String>();
+var setmap={1:'value0',...?nullmap};
+print('map 的判断展开运算符:$setmap');
+
+/**
+ * 在set中 提供if 判断 和 for 循环输出，来构建使用条件和循环的集合
+ */
+bool promoActivemap=false;
+var navmap = {
+  1:'Home',
+  2:'Furniture',
+  3:'Plants',
+  if(promoActivemap) 4:'ff' else 5:'er'
+};
+print('在map中添加if 判断输出: $navmap');
+
+// Map<int,String> listOfIntsMap = {};
+// var listOfStringsmap = {
+//   1:'value',
+//   2:'value2',
+//   listOfIntsMap.map((x,y) => new MapEntry(y, x))
+// };
+// print('set中的for循环输出: $listOfStringsset');
 
 }

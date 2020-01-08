@@ -151,7 +151,12 @@ print('foofinal:$fooval');   //foofinal:[44, 44]
     const a3 = [11 , 22];
     const a4 = [11 , 22];
     print(identical(a3, a4));//true
-
+    
+    // const 类型数据可以给final赋值，繁殖这报错。
+    const f= 5;
+    final finalValuef=f;
+    //const df=finalValuef;
+    print('finalValuef $finalValuef');
 }
 
   TestFunction(final int value){
