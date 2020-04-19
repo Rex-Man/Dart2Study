@@ -115,7 +115,7 @@ print(fixedList.length); // 2
  
 fixedList[0]="hello";
 fixedList[1]=123;
- print('输出定长的list：$fixedList')
+ print('输出定长的list：$fixedList');
 //fixedList.add(1); // 报错。固定长度不能添加元素
 
 
